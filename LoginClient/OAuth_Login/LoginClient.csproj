@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{02151A66-1A8A-432E-96A2-CF8E7B252988}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OAuth_Login</RootNamespace>
+    <AssemblyName>OAuth_Login</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\FMakeRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\FMakeRoom.Designer.cs">
+      <DependentUpon>FMakeRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\FMyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\FMyInfo.Designer.cs">
+      <DependentUpon>FMyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\FClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\FClient.Designer.cs">
+      <DependentUpon>FClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\FRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\FRoom.Designer.cs">
+      <DependentUpon>FRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\SocketManager.cs" />
+    <Compile Include="ConnectDB.cs" />
+    <Compile Include="Game\CRanking.cs" />
+    <Compile Include="Game\FlyInSky\FFlySky.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\FlyInSky\FFlySky.Designer.cs">
+      <DependentUpon>FFlySky.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\MarioWithGun\Bullet.cs" />
+    <Compile Include="Game\MarioWithGun\FGameOver_M.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\MarioWithGun\FGameOver_M.Designer.cs">
+      <DependentUpon>FGameOver_M.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\MarioWithGun\FMarioWithGun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\MarioWithGun\FMarioWithGun.Designer.cs">
+      <DependentUpon>FMarioWithGun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\MarioWithGun\FRecord_M.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\MarioWithGun\FRecord_M.Designer.cs">
+      <DependentUpon>FRecord_M.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\PingPong\FPingPong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\PingPong\FPingPong.Designer.cs">
+      <DependentUpon>FPingPong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\SurviveInSpace\FGameOver_S.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\SurviveInSpace\FGameOver_S.Designer.cs">
+      <DependentUpon>FGameOver_S.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\SurviveInSpace\FRecord_S.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\SurviveInSpace\FRecord_S.Designer.cs">
+      <DependentUpon>FRecord_S.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\SurviveInSpace\FSurviveSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\SurviveInSpace\FSurviveSpace.Designer.cs">
+      <DependentUpon>FSurviveSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\FMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FMain.Designer.cs">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Global\CGlobal.cs" />
+    <Compile Include="Login\OAuth\Naver\COAuth_Naver.cs" />
+    <Compile Include="Login\OAuth\COAuth.cs" />
+    <Compile Include="Login\OAuth\Naver\Man.cs" />
+    <Compile Include="MemberDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Login\Global\Utility\CHttp.cs" />
+    <EmbeddedResource Include="Client\FMakeRoom.resx">
+      <DependentUpon>FMakeRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\FMyInfo.resx">
+      <DependentUpon>FMyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\FClient.resx">
+      <DependentUpon>FClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\FRoom.resx">
+      <DependentUpon>FRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\FlyInSky\FFlySky.resx">
+      <DependentUpon>FFlySky.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\MarioWithGun\FGameOver_M.resx">
+      <DependentUpon>FGameOver_M.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\MarioWithGun\FMarioWithGun.resx">
+      <DependentUpon>FMarioWithGun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\MarioWithGun\FRecord_M.resx">
+      <DependentUpon>FRecord_M.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\PingPong\FPingPong.resx">
+      <DependentUpon>FPingPong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\SurviveInSpace\FGameOver_S.resx">
+      <DependentUpon>FGameOver_S.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\SurviveInSpace\FRecord_S.resx">
+      <DependentUpon>FRecord_S.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\SurviveInSpace\FSurviveSpace.resx">
+      <DependentUpon>FSurviveSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FMain.resx">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Login\packages.config" />
+    <None Include="MemberDBDataSet.xsc">
+      <DependentUpon>MemberDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MemberDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MemberDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MemberDBDataSet.xss">
+      <DependentUpon>MemberDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\네이버 아이디로 로그인_완성형_Green.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kakao_account_login_btn_medium_narrow_ov.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GAMECUBE.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginWithNaverId_Green.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kakao_account_login_btn_medium_narrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\naver_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kakao_login_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PRESS_START.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PRESS_START1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8fc4f3e8b6c61ff349e91aade9125ec4aadc1eaa_hq.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PRESS_START2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PRESS_START3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PRESS_START4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a0105845_496e58fa5afde.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pacman %281%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\힐링.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Retro Mario_33766.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Question Block_33756.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_mario_party_49671.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_start_39553.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_gear-set_1120623.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mario_Nintendo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotate_mario.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spa.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lead_animation.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6a00d8345157c669e201b8d2c2c8f2970c-800wi.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giphy %2815%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giphy %288%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\012.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Game\Red.gif" />
+    <Content Include="Game\rocket.gif" />
+    <Content Include="Game\SurviveInSpace\Red.gif" />
+    <Content Include="Game\SurviveInSpace\rocket.gif" />
+    <Content Include="MemberDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MemberDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>MemberDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Resources\ball.png" />
+    <Content Include="Resources\ball2.png" />
+    <Content Include="Resources\blackball.png" />
+    <None Include="Resources\그림1.png" />
+    <None Include="Resources\그림2.png" />
+    <None Include="Resources\wario__mario_tennis_ultra_smash__by_banjo2015-d9ereej.png" />
+    <None Include="Resources\luigi__mario_tennis_ultra_smash__by_banjo2015-d9eoxkx.png" />
+    <None Include="Resources\giphy %2827%29.gif" />
+    <None Include="Resources\giphy %2826%29.gif" />
+    <None Include="Resources\giphy %2810%291.gif" />
+    <None Include="Resources\giphy %2828%29.gif" />
+    <Content Include="Resources\ping.png" />
+    <None Include="Resources\우주배경1.jpg" />
+    <None Include="Resources\giphy %2810%29.gif" />
+    <None Include="Resources\우주배경.jpg" />
+    <None Include="Resources\tenor.gif" />
+    <None Include="Resources\giphy %2822%29.gif" />
+    <None Include="Resources\silver.png" />
+    <None Include="Resources\roket.png" />
+    <None Include="Resources\RC1.png" />
+    <None Include="Resources\PC.png" />
+    <None Include="Resources\MC.png" />
+    <None Include="Resources\GC.png" />
+    <None Include="Resources\flower.png" />
+    <None Include="Resources\bronze.png" />
+    <None Include="Resources\bird.png" />
+    <None Include="Resources\boo.png" />
+    <None Include="Resources\chain.png" />
+    <None Include="Resources\explosion.gif" />
+    <None Include="Resources\gold.png" />
+    <None Include="Resources\flylogo1.png" />
+    <None Include="Resources\flylogo.png" />
+    <None Include="Resources\sk.png" />
+    <None Include="Resources\RC.png" />
+    <None Include="Resources\giphy %2823%29.gif" />
+    <None Include="Resources\giphy %2821%292.gif" />
+    <None Include="Resources\giphy %2821%291.gif" />
+    <None Include="Resources\giphy %2812%29.gif" />
+    <None Include="Resources\pingpong01.gif" />
+    <None Include="Resources\giphy %2821%29.gif" />
+    <None Include="Resources\game1.gif" />
+    <None Include="Resources\giphy %2819%29.gif" />
+    <None Include="Resources\star.png" />
+    <None Include="Resources\mHat.png" />
+    <None Include="Resources\Mario_up.png" />
+    <None Include="Resources\Mario_right.png" />
+    <None Include="Resources\Mario_left.png" />
+    <None Include="Resources\Mario_down.png" />
+    <None Include="Resources\Mario1.png" />
+    <None Include="Resources\bomb_up.png" />
+    <None Include="Resources\bomb_right1.png" />
+    <None Include="Resources\bomb_left1.png" />
+    <None Include="Resources\bomb_down1.png" />
+    <None Include="Resources\Mario.png" />
+    <None Include="Resources\bomb_left.png" />
+    <None Include="Resources\bomb_right.png" />
+    <None Include="Resources\bomb_down.png" />
+    <None Include="Resources\giphy %286%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

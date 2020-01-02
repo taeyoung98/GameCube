@@ -1,0 +1,184 @@
+﻿using System;
+using System.Net.Sockets;
+using System.Windows.Forms;
+
+namespace LoginClient.Client
+{
+    public partial class FRoom : Form
+    {
+        SocketManager Socket = new SocketManager(2048, 0000);
+        FClient EnterRoom = new FClient();
+        ContextMenuStrip popupMenu3 = new ContextMenuStrip();
+
+        public FRoom()
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            popupMenu3.Items.Add("화면종료(Esc)");
+
+            Socket.ClientDissconnected += Socket_ClientDissconnected;
+            Socket.ConnectedServer += Socket_ConnectedServer;
+            Socket.HostLost += Socket_HostLost;
+            Socket.HostRefused += Socket_HostRefused;
+            Socket.ReceivedMessage += Socket_ReceivedMessage;
+        }
+
+        public void ClientName(string name)
+        {
+            tBox_name.Text = name;
+        }
+        public void EnterLog(string ms)
+        {
+            richTextBox1.Text += ms + "\n";
+        }
+        private void Socket_ReceivedMessage(string Message, TcpClient FromClient)
+        {
+            EnterLog(Message);
+        }
+        private void Socket_HostRefused()
+        {
+            EnterLog("server have been refused you...");
+        }
+        private void Socket_HostLost()
+        {
+            EnterLog("Losed Host...");
+        }
+        private void Socket_ConnectedServer()
+        {
+            EnterLog("You are connected to server");
+        }
+        private void Socket_ClientDissconnected(System.Net.Sockets.TcpClient Client)
+        {
+            EnterLog("A client disssconnected");
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Socket.Stop(); //Don't Forget to call Socket.Stop() before exit... if you don't the app doent close all. And server/client stays open
+        }
+
+        private void btn_dissconnect_Click(object sender, EventArgs e)
+        {
+            bool hostCheck = false;
+            Socket.SendMessageToHost(tBox_name.Text + "퇴장");
+            if (hostCheck == true)
+            {
+                EnterLog(tBox_name.Text + "퇴장");
+            }
+            Socket.Dissconnect();
+            this.Hide();
+            EnterRoom.ShowDialog();
+        }
+
+        public void ConnectManager(string name, string ip, int roomNumber)
+        {
+            if (roomNumber == 1)
+            {
+                Socket.Port = 1111; //Convert.ToInt32(EnterRoom. txt_port.Text);
+            }
+            if (roomNumber == 2)
+            {
+                Socket.Port = 2222; //Convert.ToInt32(EnterRoom. txt_port.Text);
+            }
+            if (roomNumber == 3)
+            {
+                Socket.Port = 3333; //Convert.ToInt32(EnterRoom. txt_port.Text);
+            }
+            Socket.Connect(ip);
+            bool hostCheck = false;
+            Socket.SendMessageToHost(name + "입장");
+            if (hostCheck == true)
+            {
+                EnterLog(name + "입장");
+            }
+        }
+        public void ConnectManager(string name, string ip, int roomNumber, int personnel)
+        {
+            switch (roomNumber)
+            {
+                case 1:
+                    Socket.Port = 1111;
+                    break;
+                case 2:
+                    Socket.Port = 2222;
+                    break;
+                case 3:
+                    Socket.Port = 3333;
+                    break;
+                case 4:
+                    Socket.Port = 4444;
+                    break;
+                case 5:
+                    Socket.Port = 5555;
+                    break;
+                case 6:
+                    Socket.Port = 6666;
+                    break;
+                case 7:
+                    Socket.Port = 7777;
+                    break;
+                case 8:
+                    Socket.Port = 8888;
+                    break;
+                case 9:
+                    Socket.Port = 9999;
+                    break;
+                default:
+                    break;
+            }
+            Socket.Connect(ip);
+            bool hostCheck = false;
+            Socket.SendMessageToHost(name + "입장");
+            if (hostCheck == true)
+            {
+                EnterLog(name + "입장");
+            }
+        }
+
+        private void btn_send_Click_1(object sender, EventArgs e)
+        {
+            if (Socket._isHost)
+            {
+                Socket.SendMessageToAllClients(txt_msg + ":" + txt_msg.Text);
+                //if you are host, you have to send messa   ge to all clients when you are sending.
+            }
+            else
+            {
+                if (chkb_onlht.Checked)
+                {
+                    Socket.SendMessageToHost(tBox_name.Text + ":" + txt_msg.Text);
+                }
+                else
+                {
+                    Socket.SendMessageToHostAndAllClients(tBox_name.Text + ":" + txt_msg.Text);
+                }
+                //But if you are Client, you have 2 option: Send message to host or Send message to host and other clients...
+            }
+            EnterLog(tBox_name.Text + ":" + txt_msg.Text);
+            txt_msg.Text = "";
+        }
+
+        private void Form3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+        private void Form3_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                popupMenu3.Show(e.Location);
+                popupMenu3.ItemClicked += new ToolStripItemClickedEventHandler(PopupMenu3_ItemClicked);
+            }
+        }
+        private void PopupMenu3_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text == "화면종료(Esc)")
+            {
+                this.Close();
+            }
+        }
+    }
+}
